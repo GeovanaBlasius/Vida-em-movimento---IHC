@@ -1,0 +1,91 @@
+name: Build - Windows e Mac
+
+on:
+  workflow_dispatch:  # Disparo manual pela aba Actions no GitHub
+  push:
+    tags:
+      - "v*"          # Ou automatico ao criar uma tag (ex: v1.0.0)
+
+jobs:
+
+  build-windows:
+    name: Windows
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Instalar dependencias
+        run: |
+          pip install "opencv-python>=4.13.0" "mediapipe==0.10.14" "numpy>=2.4.0" "PySide6==6.11.1" pyinstaller
+
+      - name: Build
+        run: pyinstaller VidaEmMovimento.spec --noconfirm
+
+      - name: Compactar
+        shell: pwsh
+        run: Compress-Archive -Path dist\VidaEmMovimento -DestinationPath VidaEmMovimento-Windows.zip
+
+      - name: Upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: VidaEmMovimento-Windows
+          path: VidaEmMovimento-Windows.zip
+          retention-days: 30
+
+  build-mac:
+    name: Mac (Apple Silicon)
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Instalar dependencias
+        run: |
+          pip install "opencv-python>=4.13.0" "mediapipe==0.10.14" "numpy>=2.4.0" "PySide6==6.11.1" pyinstaller
+
+      - name: Build
+        run: pyinstaller VidaEmMovimento.spec --noconfirm
+
+      - name: Compactar
+        run: cd dist && zip -r ../VidaEmMovimento-Mac.zip VidaEmMovimento/
+
+      - name: Upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: VidaEmMovimento-Mac
+          path: VidaEmMovimento-Mac.zip
+          retention-days: 30
+
+  build-mac-intel:
+    name: Mac (Intel)
+    runs-on: macos-13
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Instalar dependencias
+        run: |
+          pip install "opencv-python>=4.13.0" "mediapipe==0.10.14" "numpy>=2.4.0" "PySide6==6.11.1" pyinstaller
+
+      - name: Build
+        run: pyinstaller VidaEmMovimento.spec --noconfirm
+
+      - name: Compactar
+        run: cd dist && zip -r ../VidaEmMovimento-Mac-Intel.zip VidaEmMovimento/
+
+      - name: Upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: VidaEmMovimento-Mac-Intel
+          path: VidaEmMovimento-Mac-Intel.zip
+          retention-days: 30

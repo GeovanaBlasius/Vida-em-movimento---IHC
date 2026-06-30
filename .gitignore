@@ -1,0 +1,19 @@
+# Build PyInstaller (cache temporario)
+dist/
+build/VidaEmMovimento/
+
+# Instaladores gerados
+instaladores/
+*.zip
+*.exe
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.env
+venv/
+.venv/
+
+# VS Code
+.vscode/

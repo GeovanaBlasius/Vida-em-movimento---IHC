@@ -1,0 +1,4 @@
+opencv-python>=4.13.0
+mediapipe==0.10.14
+numpy==2.4.6
+PySide6==6.11.1
