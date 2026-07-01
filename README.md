@@ -104,28 +104,6 @@ python main.py
 
 ---
 
-# 📦 Gerando o Executável
-
-Windows:
-
-```bash
-build\build.bat
-```
-
-macOS:
-
-```bash
-sh build/build_mac.sh
-```
-
-O instalador será gerado em:
-
-```
-instaladores/
-```
-
----
-
 # 🏗 Estrutura do Projeto
 
 ```text
