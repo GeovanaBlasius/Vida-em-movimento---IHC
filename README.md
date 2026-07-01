@@ -201,7 +201,7 @@ Tela de Resultado
 
 Este projeto está licenciado sob a [Licença MIT](LICENCE.md).
 
-Consulte também o arquivo [Notices.md](NOTICES.md) para informações sobre as bibliotecas de terceiros utilizadas.
+Consulte também o arquivo [NOTICES.md](NOTICES.md) para informações sobre as bibliotecas de terceiros utilizadas.
 
 ---
 
