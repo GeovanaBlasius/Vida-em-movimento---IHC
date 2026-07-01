@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="Image.png" alt="Vida em Movimento" width="100%">
+  <img src="image.png" alt="Vida em Movimento" width="100%">
 </p>
 <p align="center">
 
