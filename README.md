@@ -1,159 +1,236 @@
-# Vida em Movimento
+<p align="center">
+  <img src="Image.png" alt="Vida em Movimento" width="100%">
+</p>
+<p align="center">
 
-> Exercícios de alongamento assistidos por Inteligência Artificial para promover a consciência corporal em idosos e pessoas em processo de reabilitação.
+![Python](https://img.shields.io/badge/Python-3.11-blue?logo=python)
+![PySide6](https://img.shields.io/badge/PySide6-Qt-green)
+![MediaPipe](https://img.shields.io/badge/MediaPipe-Pose-orange)
+![OpenCV](https://img.shields.io/badge/OpenCV-Computer%20Vision-red)
+![License](https://img.shields.io/badge/License-MIT-yellow)
 
----
-
-## Sobre o Projeto
-
-**Vida em Movimento** é uma aplicação desktop que utiliza visão computacional para guiar e corrigir exercícios físicos em tempo real. Através da câmera do computador, o sistema detecta a pose do usuário, analisa o movimento e fornece feedback instantâneo na tela — sem necessidade de sensores externos.
-
-O projeto foi desenvolvido como trabalho acadêmico na disciplina de **Interação Humano-Computador (IHC)**, com foco em acessibilidade e facilidade de uso para o público idoso.
-
----
-
-## ✨ Funcionalidades
-
-- **Detecção de pose em tempo real** via câmera, usando MediaPipe
-- **3 exercícios guiados** com vídeo demonstrativo lado a lado
-- **3 níveis de dificuldade**: Fácil, Médio e Difícil
-- **Feedback visual e textual** em tempo real durante o exercício
-- **Fluxo completo**: tela inicial → seleção de dificuldade → exercício → resultado
-
-### Exercícios disponíveis
-
-| Exercício | Descrição |
-|---|---|
-| Elevação Frontal Unilateral | Elevação do braço para frente, alternando os lados |
-| Elevação Lateral Bilateral | Elevação dos dois braços lateralmente |
-| Inclinação Lateral | Inclinação do tronco para os lados com braço elevado |
+</p>
 
 ---
 
-## Como Instalar (Usuário Final)
+# 📖 Sobre o Projeto
 
-> Não é necessário instalar Python ou nenhuma dependência.
+O **Vida em Movimento** é uma aplicação desktop desenvolvida para auxiliar **idosos** e pessoas em processo de **reabilitação física** através de exercícios de alongamento guiados por Inteligência Artificial.
 
-### ⬇️ [Baixar instalador — Windows](https://github.com/GeovanaBlasius/Vida-em-movimento---IHC/releases/latest)
+Utilizando apenas a câmera do computador, o sistema identifica automaticamente a postura do usuário, acompanha os movimentos em tempo real e fornece feedback visual durante toda a execução do exercício.
 
-1. Clique no link acima e baixe o arquivo **`VidaEmMovimento-Setup-Windows.exe`**
-2. Execute o instalador e siga os passos
-3. Abra o app pelo atalho criado na área de trabalho ou no menu Iniciar
-
-> ⚠️ O Windows pode exibir um aviso de segurança. Clique em **"Mais informações" → "Executar assim mesmo"** para prosseguir.
+O projeto foi desenvolvido como trabalho da disciplina de **Interação Humano-Computador (IHC)**, com foco em acessibilidade, usabilidade e qualidade da experiência do usuário.
 
 ---
 
-## 🛠️ Como Rodar o Código Fonte
+# 🎯 Objetivos
 
-### Pré-requisitos
-- Python 3.11+
-- Câmera conectada ao computador
+O sistema busca:
 
-### Instalação
+- Promover a consciência corporal;
+- Auxiliar na execução correta dos exercícios;
+- Fornecer feedback em tempo real;
+- Incentivar a prática segura de alongamentos;
+- Disponibilizar uma interface simples e acessível para idosos.
+
+---
+
+# ✨ Funcionalidades
+
+- 📷 Detecção corporal em tempo real utilizando MediaPipe;
+- 🤖 Correção automática da postura;
+- 💬 Feedback visual durante a execução;
+- 🎥 Vídeo demonstrativo sincronizado;
+- 📈 Três níveis de dificuldade;
+- 🔢 Contagem automática de repetições;
+- 🖥 Interface intuitiva desenvolvida para o público idoso.
+
+---
+
+# 🧘 Exercícios Disponíveis
+
+| Exercício | Objetivo |
+|------------|----------|
+| Elevação Frontal Unilateral | Mobilidade dos ombros |
+| Elevação Lateral Bilateral | Fortalecimento dos membros superiores |
+| Inclinação Lateral | Alongamento do tronco |
+
+---
+
+# 🚀 Instalação
+
+## Usuário Final
+
+Não é necessário instalar Python.
+
+Acesse a página de **Releases**:
+
+👉 https://github.com/GeovanaBlasius/Vida-em-movimento---IHC/releases/latest
+
+1. Baixe o instalador;
+2. Execute o arquivo;
+3. Siga as etapas da instalação;
+4. Abra o aplicativo.
+
+> O Windows poderá exibir um aviso de segurança. Clique em **Mais informações → Executar assim mesmo**.
+
+---
+
+# 💻 Executando pelo Código-Fonte
+
+## Pré-requisitos
+
+- Python 3.11 ou superior
+- Webcam
+
+Clone o projeto:
 
 ```bash
-# Clone o repositório
 git clone https://github.com/GeovanaBlasius/Vida-em-movimento---IHC.git
 cd Vida-em-movimento---IHC
+```
 
-# Instale as dependências
+Instale as dependências:
+
+```bash
 pip install -r requirements.txt
+```
 
-# Execute
+Execute:
+
+```bash
 python main.py
 ```
 
-### Gerar o executável (Windows)
+---
+
+# 📦 Gerando o Executável
+
+Windows:
 
 ```bash
-# Execute o script de build (requer Inno Setup 6 instalado)
 build\build.bat
 ```
 
-O instalador será gerado em `instaladores\VidaEmMovimento-Setup-Windows.exe`.
+macOS:
+
+```bash
+sh build/build_mac.sh
+```
+
+O instalador será gerado em:
+
+```
+instaladores/
+```
 
 ---
 
-## 🗂️ Estrutura do Projeto
+# 🏗 Estrutura do Projeto
 
-```
-Vida em Movimento/
-│
-├── main.py                        # Ponto de entrada
-├── requirements.txt               # Dependências
-├── pose_landmarker_full.task      # Modelo de pose MediaPipe
-│
-├── src/
-│   ├── config.py                  # Configurações globais
-│   ├── core/
-│   │   ├── analisador.py          # Detecção e análise de pose
-│   │   ├── exercicios/            # Lógica de cada exercício
-│   │   └── controle/              # Estado e validação
-│   └── interface/
-│       ├── app.py                 # Gerenciador de telas
-│       ├── tema.py                # Estilos visuais
-│       ├── telas/                 # Telas da aplicação
-│       └── widgets/               # Componentes reutilizáveis
+```text
+Vida-em-movimento
 │
 ├── assets/
-│   ├── Aviso.png                  # Imagem de boas-vindas
-│   └── exercicios/                # Vídeos demonstrativos
 │
-└── build/
-    ├── build.bat                  # Script de build (Windows)
-    └── build_mac.sh               # Script de build (Mac)
+├── build/
+│
+├── docs/
+│   ├── images/
+│   └── gifs/
+│
+├── instaladores/
+│
+├── src/
+│   ├── config.py
+│   │
+│   ├── core/
+│   │   ├── analisador.py
+│   │   ├── controle/
+│   │   └── exercicios/
+│   │
+│   └── interface/
+│       ├── telas/
+│       ├── widgets/
+│       ├── app.py
+│       └── tema.py
+│
+├── main.py
+│
+├── requirements.txt
+│
+└── pose_landmarker_full.task
 ```
 
 ---
 
-## 🚀 Tecnologias
+# ⚙️ Tecnologias
 
-| Tecnologia | Uso |
-|---|---|
-| [Python 3.11](https://python.org) | Linguagem principal |
-| [PySide6](https://doc.qt.io/qtforpython/) | Interface gráfica (Qt) |
-| [MediaPipe](https://mediapipe.dev/) | Detecção de pose corporal |
-| [OpenCV](https://opencv.org/) | Captura de câmera e processamento de vídeo |
-| [NumPy](https://numpy.org/) | Cálculos de ângulos e geometria |
+| Tecnologia | Finalidade |
+|------------|------------|
+| Python 3.11 | Linguagem principal |
+| PySide6 | Interface gráfica |
+| MediaPipe | Detecção corporal |
+| OpenCV | Processamento de vídeo |
+| NumPy | Cálculos geométricos |
 
 ---
 
-## 📐 Fluxo da Aplicação
+# 🔄 Fluxo da Aplicação
 
-```
+```text
 Tela Inicial
-    ↓ (clica INICIAR)
-Seleção de Dificuldade  →  Fácil / Médio / Difícil
-    ↓
-Tela do Exercício
-    ├── Câmera ao vivo com esqueleto detectado
-    ├── Vídeo demonstrativo do exercício
-    └── Feedback em tempo real
-    ↓ (exercício concluído)
-Tela Final  →  Repetir ou Voltar ao início
+      │
+      ▼
+Escolha da Dificuldade
+      │
+      ▼
+Execução do Exercício
+      │
+      ├── Vídeo Demonstrativo
+      ├── Captura da Webcam
+      ├── Detecção da Postura
+      ├── Correção em Tempo Real
+      └── Contagem das Repetições
+      │
+      ▼
+Tela de Resultado
 ```
 
 ---
 
-## Organizadores do projeto
+# 👥 Equipe
 
-**Geovana Blasius**
-- GitHub: [@GeovanaBlasius](https://github.com/GeovanaBlasius)
-- Email: blasiusgeovana61@gmail.com
-
-**Davi Bianchi Ayres**
-- GitHub: [@Davibianchi01](https://github.com/Davibianchi01)
-- Email: dbianchiayres@gmail.com
-
-**Miguel Antonio Campos de Oliveira**
-- GitHub: [@MiqueasGames](https://github.com/MiqueasGames)
-- Email: Omiguelantonio190@gmail.com
+### Geovana Blasius
+- GitHub: https://github.com/GeovanaBlasius
+- E-mail: blasiusgeovana61@gmail.com
 
 ---
 
-## Licença
+### Davi Bianchi Ayres
+- GitHub: https://github.com/Davibianchi01
+- E-mail: dbianchiayres@gmail.com
 
-Este projeto está licenciado sob a [MIT License](LICENSE).
+---
 
-As bibliotecas utilizadas possuem suas próprias licenças. Consulte o arquivo [NOTICES.md](NOTICES.md) para detalhes completos de atribuição de terceiros.
+### Miguel Antonio Campos de Oliveira
+- GitHub: https://github.com/MiqueasGames
+- E-mail: omiguelantonio190@gmail.com
+
+---
+
+# 📄 Licença
+
+Este projeto está licenciado sob a **Licença MIT**.
+
+Consulte também o arquivo **NOTICES.md** para informações sobre as bibliotecas de terceiros utilizadas.
+
+---
+
+<div align="center">
+
+Desenvolvido para a disciplina de **Interação Humano-Computador (IHC)**
+
+**INSTITUTO FEDERAL CATARINENSE - CAMPUS RIO DO SUL**
+
+</div>
