@@ -136,7 +136,7 @@ Tela Final  →  Repetir ou Voltar ao início
 
 ---
 
-## Autores do projeto
+## Organizadores do projeto
 
 **Geovana Blasius**
 - GitHub: [@GeovanaBlasius](https://github.com/GeovanaBlasius)
@@ -146,8 +146,14 @@ Tela Final  →  Repetir ou Voltar ao início
 - GitHub: [@Davibianchi01](https://github.com/Davibianchi01)
 - Email: dbianchiayres@gmail.com
 
+**Miguel Antonio Campos de Oliveira**
+- GitHub: [@MiqueasGames](https://github.com/MiqueasGames)
+- Email: Omiguelantonio190@gmail.com
+
 ---
 
 ## Licença
 
-Este projeto foi desenvolvido para fins acadêmicos.
+Este projeto está licenciado sob a [MIT License](LICENSE).
+
+As bibliotecas utilizadas possuem suas próprias licenças. Consulte o arquivo [NOTICES.md](NOTICES.md) para detalhes completos de atribuição de terceiros.
