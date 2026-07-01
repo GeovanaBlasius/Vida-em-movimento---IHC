@@ -1,15 +1,15 @@
 name: Build - Windows e Mac
 
 on:
-  workflow_dispatch:  # Disparo manual pela aba Actions no GitHub
+  workflow_dispatch:
   push:
     tags:
-      - "v*"          # Ou automatico ao criar uma tag (ex: v1.0.0)
+      - "v*"
 
 jobs:
 
   build-windows:
-    name: Windows
+    name: Windows (.exe installer)
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
@@ -19,25 +19,27 @@ jobs:
           python-version: "3.11"
 
       - name: Instalar dependencias
-        run: |
-          pip install "opencv-python>=4.13.0" "mediapipe==0.10.14" "numpy>=2.4.0" "PySide6==6.11.1" pyinstaller
+        run: pip install "opencv-python>=4.13.0" "mediapipe==0.10.14" "numpy>=2.4.0" "PySide6==6.11.1" pyinstaller
 
-      - name: Build
+      - name: Build PyInstaller
         run: pyinstaller VidaEmMovimento.spec --noconfirm
 
-      - name: Compactar
+      - name: Instalar Inno Setup
+        run: choco install innosetup --yes
+
+      - name: Gerar instalador .exe
+        run: '& "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" setup.iss'
         shell: pwsh
-        run: Compress-Archive -Path dist\VidaEmMovimento -DestinationPath VidaEmMovimento-Windows.zip
 
       - name: Upload
         uses: actions/upload-artifact@v4
         with:
           name: VidaEmMovimento-Windows
-          path: VidaEmMovimento-Windows.zip
+          path: instaladores\VidaEmMovimento-Setup-Windows.exe
           retention-days: 30
 
   build-mac:
-    name: Mac (Apple Silicon)
+    name: Mac Apple Silicon (.dmg)
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
@@ -47,24 +49,29 @@ jobs:
           python-version: "3.11"
 
       - name: Instalar dependencias
-        run: |
-          pip install "opencv-python>=4.13.0" "mediapipe==0.10.14" "numpy>=2.4.0" "PySide6==6.11.1" pyinstaller
+        run: pip install "opencv-python>=4.13.0" "mediapipe==0.10.14" "numpy>=2.4.0" "PySide6==6.11.1" pyinstaller
 
-      - name: Build
+      - name: Build PyInstaller
         run: pyinstaller VidaEmMovimento.spec --noconfirm
 
-      - name: Compactar
-        run: cd dist && zip -r ../VidaEmMovimento-Mac.zip VidaEmMovimento/
+      - name: Gerar instalador .dmg
+        run: |
+          mkdir -p instaladores
+          hdiutil create \
+            -volname "Vida em Movimento" \
+            -srcfolder "dist/VidaEmMovimento/VidaEmMovimento.app" \
+            -ov -format UDZO \
+            "instaladores/VidaEmMovimento-Mac-AppleSilicon.dmg"
 
       - name: Upload
         uses: actions/upload-artifact@v4
         with:
-          name: VidaEmMovimento-Mac
-          path: VidaEmMovimento-Mac.zip
+          name: VidaEmMovimento-Mac-AppleSilicon
+          path: instaladores/VidaEmMovimento-Mac-AppleSilicon.dmg
           retention-days: 30
 
   build-mac-intel:
-    name: Mac (Intel)
+    name: Mac Intel (.dmg)
     runs-on: macos-13
     steps:
       - uses: actions/checkout@v4
@@ -74,18 +81,23 @@ jobs:
           python-version: "3.11"
 
       - name: Instalar dependencias
-        run: |
-          pip install "opencv-python>=4.13.0" "mediapipe==0.10.14" "numpy>=2.4.0" "PySide6==6.11.1" pyinstaller
+        run: pip install "opencv-python>=4.13.0" "mediapipe==0.10.14" "numpy>=2.4.0" "PySide6==6.11.1" pyinstaller
 
-      - name: Build
+      - name: Build PyInstaller
         run: pyinstaller VidaEmMovimento.spec --noconfirm
 
-      - name: Compactar
-        run: cd dist && zip -r ../VidaEmMovimento-Mac-Intel.zip VidaEmMovimento/
+      - name: Gerar instalador .dmg
+        run: |
+          mkdir -p instaladores
+          hdiutil create \
+            -volname "Vida em Movimento" \
+            -srcfolder "dist/VidaEmMovimento/VidaEmMovimento.app" \
+            -ov -format UDZO \
+            "instaladores/VidaEmMovimento-Mac-Intel.dmg"
 
       - name: Upload
         uses: actions/upload-artifact@v4
         with:
           name: VidaEmMovimento-Mac-Intel
-          path: VidaEmMovimento-Mac-Intel.zip
+          path: instaladores/VidaEmMovimento-Mac-Intel.dmg
           retention-days: 30
