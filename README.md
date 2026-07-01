@@ -199,9 +199,9 @@ Tela de Resultado
 
 # 📄 Licença
 
-Este projeto está licenciado sob a **Licença MIT**.
+Este projeto está licenciado sob a [Licença MIT](LICENCE.md).
 
-Consulte também o arquivo **NOTICES.md** para informações sobre as bibliotecas de terceiros utilizadas.
+Consulte também o arquivo [Notices.md](NOTICES.md) para informações sobre as bibliotecas de terceiros utilizadas.
 
 ---
 
