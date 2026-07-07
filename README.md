@@ -15,7 +15,7 @@
 
 # 📖 Sobre o Projeto
 
-O **Vida em Movimento** é uma aplicação desktop desenvolvida para auxiliar **idosos** e pessoas em processo de **reabilitação física** através de exercícios de alongamento guiados por Inteligência Artificial.
+O **Vida em Movimento** é uma aplicação desktop desenvolvida para auxiliar **idosos** na execução de exercícios de alongamento guiados por Inteligência Artificial.
 
 Utilizando apenas a câmera do computador, o sistema identifica automaticamente a postura do usuário, acompanha os movimentos em tempo real e fornece feedback visual durante toda a execução do exercício.
 
